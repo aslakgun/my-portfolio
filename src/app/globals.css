@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -23,4 +23,284 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+/* globals.css - Windows 95 Foundation Styles */
+
+/* Import a pixelated font (you can add this to your _document.js or use a web font) */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* Windows 95 Color Variables */
+:root {
+  --win95-gray: #c0c0c0;
+  --win95-dark-gray: #808080;
+  --win95-light-gray: #e0e0e0;
+  --win95-darker-gray: #404040;
+  --win95-blue: #0000ff;
+  --win95-dark-blue: #000080;
+  --win95-cyan: #008080;
+  --win95-white: #ffffff;
+  --win95-black: #000000;
+  --win95-desktop-teal: #008080;
 }
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'MS Sans Serif', 'VT323', monospace, sans-serif;
+  font-size: 11px;
+  background: var(--win95-desktop-teal);
+  overflow: hidden; /* Desktop doesn't scroll */
+  cursor: default;
+  user-select: none; /* Classic Windows feel */
+}
+
+/* Desktop background */
+.desktop {
+  width: 100vw;
+  height: 100vh;
+  background: var(--win95-desktop-teal);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Classic Windows 95 border styles */
+.border-raised {
+  border: 2px outset var(--win95-gray);
+}
+
+.border-sunken {
+  border: 2px inset var(--win95-gray);
+}
+
+.border-flat {
+  border: 1px solid var(--win95-dark-gray);
+}
+
+/* Classic beveled effect */
+.bevel-raised {
+  box-shadow: 
+    inset 1px 1px 0 var(--win95-white),
+    inset -1px -1px 0 var(--win95-dark-gray);
+}
+
+.bevel-sunken {
+  box-shadow: 
+    inset -1px -1px 0 var(--win95-white),
+    inset 1px 1px 0 var(--win95-dark-gray);
+}
+
+/* Window Styles */
+.window {
+  position: absolute;
+  background: var(--win95-gray);
+  border: 2px outset var(--win95-gray);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  min-width: 200px;
+  min-height: 150px;
+  z-index: 100;
+}
+
+.window.active {
+  z-index: 200;
+}
+
+/* Title Bar */
+.title-bar {
+  background: linear-gradient(90deg, var(--win95-dark-blue) 0%, var(--win95-blue) 100%);
+  color: var(--win95-white);
+  padding: 2px 4px;
+  font-weight: bold;
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  user-select: none;
+}
+
+.title-bar.inactive {
+  background: linear-gradient(90deg, var(--win95-dark-gray) 0%, var(--win95-gray) 100%);
+  color: var(--win95-dark-gray);
+}
+
+.title-buttons {
+  display: flex;
+  gap: 2px;
+}
+
+.title-button {
+  width: 16px;
+  height: 14px;
+  background: var(--win95-gray);
+  border: 1px outset var(--win95-gray);
+  font-size: 9px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--win95-black);
+}
+
+.title-button:hover {
+  background: var(--win95-light-gray);
+}
+
+.title-button:active {
+  border: 1px inset var(--win95-gray);
+}
+
+.window-content {
+  padding: 8px;
+  background: var(--win95-gray);
+  height: calc(100% - 20px); /* Subtract title bar height */
+  overflow: auto;
+}
+
+/* Classic Button Styles */
+.btn-95 {
+  background: var(--win95-gray);
+  border: 2px outset var(--win95-gray);
+  padding: 4px 12px;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  color: var(--win95-black);
+  min-width: 75px;
+  text-align: center;
+}
+
+.btn-95:hover {
+  background: var(--win95-light-gray);
+}
+
+.btn-95:active {
+  border: 2px inset var(--win95-gray);
+  transform: translate(1px, 1px);
+}
+
+.btn-95:disabled {
+  color: var(--win95-dark-gray);
+  cursor: not-allowed;
+}
+
+.btn-95:disabled:active {
+  border: 2px outset var(--win95-gray);
+  transform: none;
+}
+
+.btn-primary {
+  border: 3px outset var(--win95-gray);
+  font-weight: bold;
+}
+
+/* Taskbar Styles */
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: var(--win95-gray);
+  border-top: 1px solid var(--win95-dark-gray);
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  z-index: 1000;
+}
+
+.start-button {
+  background: var(--win95-gray);
+  border: 2px outset var(--win95-gray);
+  height: 26px;
+  padding: 0 8px;
+  font-weight: bold;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.start-button:hover {
+  background: var(--win95-light-gray);
+}
+
+.start-button:active {
+  border: 2px inset var(--win95-gray);
+}
+
+.taskbar-clock {
+  margin-left: auto;
+  padding: 4px 8px;
+  border: 1px inset var(--win95-gray);
+  font-size: 11px;
+  background: var(--win95-gray);
+}
+
+/* Desktop Icons */
+.desktop-icon {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--win95-white);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.desktop-icon:hover {
+  background: rgba(0, 0, 255, 0.3);
+}
+
+.desktop-icon.selected {
+  background: rgba(0, 0, 255, 0.5);
+}
+
+.desktop-icon img {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+  margin-bottom: 0px;
+}
+
+.desktop-icon span {
+  font-size: 10px;
+  text-align: center;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+/* Scrollbar styling (webkit browsers) */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--win95-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--win95-gray);
+  border: 2px outset var(--win95-gray);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--win95-gray);
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.text-bold { font-weight: bold; }
+.cursor-pointer { cursor: pointer; }
+.no-select { user-select: none; }
